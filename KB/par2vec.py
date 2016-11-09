@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-#TO COMPLETE !!!!!
+
 
 import numpy as np
 from gensim.models.doc2vec import Doc2Vec 
@@ -27,7 +27,7 @@ def par_to_vec(paragraph,stopwds,model_doc2vec):
     tok = RegexpTokenizer(r'\w+')
     res_inter = tok.tokenize(paragraph.lower())
     res_inter_stop = [w for w in res_inter if w not in stopwords]
-    vect = model_doc2vec.infer_vector(output)
+    vect = model_doc2vec.infer_vector(res_inter_stop)
     return vect
 
 
