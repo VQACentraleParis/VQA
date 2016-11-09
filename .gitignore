@@ -1,0 +1,4 @@
+Data/*
+VCAP/inception_v3.ckpt
+VGG16/vgg16_weights.npz
+*.pyc
