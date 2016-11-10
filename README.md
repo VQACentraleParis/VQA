@@ -6,6 +6,7 @@
 You need to first download the model "inception_v3.cpkt" as such in VCAP directory :
 
 ```powerconsole
+cd VCAP/
 wget "http://download.tensorflow.org/models/inception_v3_2016_08_28.tar.gz"
 tar -xvf "inception_v3_2016_08_28.tar.gz"
 rm "inception_v3_2016_08_28.tar.gz"
@@ -20,7 +21,7 @@ Aftward to get the program running, the easiest and more clean way is to create 
 $ pip install virtualenv
 ```
 
-Afterward you will create a clean virtualenv for the VQA  
+Afterward you will create a clean virtualenv for the VQA
 
 ```
 $ virtualenv vqaenv
