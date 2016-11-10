@@ -249,7 +249,7 @@ class vgg16:
         weights = np.load(weight_file)
         keys = sorted(weights.keys())
         for i, k in enumerate(keys):
-            print i, k, np.shape(weights[k])
+            #print i, k, np.shape(weights[k])
             sess.run(self.parameters[i].assign(weights[k]))
 
 def getVattrAttr(imagePath):
@@ -267,6 +267,7 @@ def getVattrAttr(imagePath):
         for attr in attributesNotCleaned :
 	    	attributes += attr.split(', ')
 	attributes = attributes[0:5]
+	print("Vattr calculated")
 	return(prob, attributes)
 
 

@@ -22,15 +22,16 @@ def getVcap(imagePath):
 	with tf.Session() as sess:
 	  init = tf.initialize_all_variables()
 	  sess.run(init)
-	  print "variables initialized"
+	  #print "variables initialized"
 	  saver.restore(sess, "VCAP/inception_v3.ckpt")
-	  print("Model restored.")
+	  #print("Model restored.")
 
 	  
 
 	  feed_dict = { images: batch }
 
 	  result = sess.run(model, feed_dict=feed_dict)
+	print("Vcap calculated")
         return result[0,:]
 
 if __name__=='main':
