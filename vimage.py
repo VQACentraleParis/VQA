@@ -5,6 +5,7 @@ from KB import par2vec
 import numpy as np
 
 def getVimage(imagePath):
+	print("Calculating Vimage of "+imagePath)
 	vcap = example_image_embedding.getVcap(imagePath)
 	vattr, attrs = vgg16.getVattrAttr(imagePath)
 
@@ -16,6 +17,7 @@ def getVimage(imagePath):
 if __name__=='__main__':
 	vimage = getVimage('Data/cat.jpg')
 	print(vimage)
+	print(vimage.shape)
 	
 	
 	
