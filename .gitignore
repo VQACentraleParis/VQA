@@ -2,5 +2,8 @@ Data/*
 VCAP/inception_v3.ckpt
 VGG16/vgg16_weights.npz
 *.pyc
+<<<<<<< HEAD
 KB/enwiki_dbow/*
 .DS_Store
+=======
+>>>>>>> parent of 5ed8ec6... update gitignore
