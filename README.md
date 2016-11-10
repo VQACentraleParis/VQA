@@ -39,9 +39,10 @@ $ pip install -r requirements.txt
 ```
 
 
-Also you will need to install gensim
+Also you will need to install gensim and SPARQLWrapper
 ```
 $ pip install --upgrade gensim
+$ pip install SPARQLWrapper
 ```
 
 If you are done working in the virtual environment for the moment, you can deactivate it:
