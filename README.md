@@ -29,7 +29,7 @@ $ virtualenv vqaenv
 To begin using the virtual environment, it needs to be activated:
 
 ```
-$ source venv/bin/activate
+$ source vqaenv/bin/activate
 ```
 
 If it is the first time you will need to install the required packages with proper version that will not conflict with python env
