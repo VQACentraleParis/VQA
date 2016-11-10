@@ -6,6 +6,7 @@ import numpy as np
 from os.path import isfile, join
 import utils
 import re
+import vimage
 
 def main():
 	parser = argparse.ArgumentParser()
@@ -15,7 +16,7 @@ def main():
                        help='Model Path')
 	parser.add_argument('--num_lstm_layers', type=int, default=2,
                        help='num_lstm_layers')
-	parser.add_argument('--fc7_feature_length', type=int, default=4096,
+	parser.add_argument('--fc7_feature_length', type=int, default=3348,
                        help='fc7_feature_length')
 	parser.add_argument('--rnn_size', type=int, default=512,
                        help='rnn_size')
@@ -41,7 +42,8 @@ def main():
 	qvocab = vocab_data['question_vocab']
 	q_map = { vocab_data['question_vocab'][qw] : qw for qw in vocab_data['question_vocab']}
 	
-	fc7_features = utils.extract_fc7_features(args.image_path, join(args.data_dir, 'vgg16.tfmodel'))
+	#fc7_features = utils.extract_fc7_features(args.image_path, join(args.data_dir, 'vgg16.tfmodel'))
+	fc7_features = vimage.getVimage(args.image_path)
 	
 	model_options = {
 		'num_lstm_layers' : args.num_lstm_layers,
