@@ -97,7 +97,8 @@ def main():
 				print "Loss", loss_value, batch_no, i
 				print "Training Accuracy", accuracy
 			
-		save_path = saver.save(sess, "Data/Models/model{}.ckpt".format(i))
+			
+		#save_path = saver.save(sess, "Data/Models/model{}.ckpt".format(i))
 		
 
 def get_training_batch(batch_no, batch_size, fc7_features, image_id_map, qa_data, split):
@@ -120,7 +121,7 @@ def get_training_batch(batch_no, batch_size, fc7_features, image_id_map, qa_data
 		answer[count, qa[i]['answer']] = 1.0
 		fc7_index = image_id_map[ qa[i]['image_id'] ]
 		#fc7[count,:] = fc7_features[fc7_index][:]
-		####fc7[count,:] = vimage.getVimage("image path ?")
+		fc7[count,:] = vimage.getVimage(qa[i]['image_id']) ###TO VERIFY !!!
 		count += 1
 	
 	return sentence, answer, fc7
