@@ -38,6 +38,12 @@ If it is the first time you will need to install the required packages with prop
 $ pip install -r requirements.txt
 ```
 
+
+Also you will need to install gensim
+```
+$ pip install --upgrade gensim
+```
+
 If you are done working in the virtual environment for the moment, you can deactivate it:
 
 ```
