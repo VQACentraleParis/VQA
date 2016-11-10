@@ -77,7 +77,7 @@ def main():
 		batch_no = 0
 
 		while (batch_no*args.batch_size) < len(qa_data['training']):
-			sentence, answer, fc7 = get_training_batch(batch_no, args.batch_size, fc7_features, image_id_map, qa_data, 'train')
+			sentence, answer, fc7 = get_training_batch(batch_no, args.batch_size, image_id_map, qa_data, 'train')
 			_, loss_value, accuracy, pred = sess.run([train_op, t_loss, t_accuracy, t_p], 
 				feed_dict={
 					input_tensors['fc7']:fc7,
@@ -101,7 +101,7 @@ def main():
 		#save_path = saver.save(sess, "Data/Models/model{}.ckpt".format(i))
 		
 
-def get_training_batch(batch_no, batch_size, fc7_features, image_id_map, qa_data, split):
+def get_training_batch(batch_no, batch_size, image_id_map, qa_data, split):
 	qa = None
 	if split == 'train':
 		qa = qa_data['training']
@@ -121,7 +121,8 @@ def get_training_batch(batch_no, batch_size, fc7_features, image_id_map, qa_data
 		answer[count, qa[i]['answer']] = 1.0
 		fc7_index = image_id_map[ qa[i]['image_id'] ]
 		#fc7[count,:] = fc7_features[fc7_index][:]
-		fc7[count,:] = vimage.getVimage(qa[i]['image_id']) ###TO VERIFY !!!
+		print(qa[i])
+		fc7[count,:] = vimage.getVimage('Data/train2014/COCO_train2014_000000'+str(qa[i]['image_id'])+'.jpg') ###TO VERIFY !!!
 		count += 1
 	
 	return sentence, answer, fc7

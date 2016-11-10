@@ -15,7 +15,7 @@ def getVimage(imagePath):
 	return vimage
 
 if __name__=='__main__':
-	vimage = getVimage('Data/cat.jpg')
+	vimage = getVimage('Data/train2014/COCO_train2014_000000487025.jpg')
 	print(vimage)
 	print(vimage.shape)
 	
