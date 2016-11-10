@@ -7,12 +7,13 @@ from gensim.models.doc2vec import Doc2Vec
 from nltk.corpus import stopwords
 from nltk.tokenize import RegexpTokenizer
 
+def getPar2VecModel():
+	# Loading of trained model ( Wikipedia ), to be charged one time 
+	model_doc2vec = Doc2Vec.load('./enwiki_dbow/enwiki_dbow/doc2vec.bin')
+	stopwds = stopword.words('english')
+	return(stopwds, model_doc2vec)
 
-# Loading of trained model ( Wikipedia ), to be charged one time 
-model_doc2vec = Doc2Vec.load('./enwiki_dbow/enwiki_dbow/doc2vec.bin')
-stopwds = stopword.words('english')
-
-def par_to_vec(paragraph,stopwds,model_doc2vec):
+def getVec(paragraph,stopwds,model_doc2vec):
     """
     Args :
     paragraph : string to process, lower letter, remove punctuation, tokenize and remove stopwords
@@ -30,4 +31,8 @@ def par_to_vec(paragraph,stopwds,model_doc2vec):
     vect = model_doc2vec.infer_vector(res_inter_stop)
     return vect
 
-
+if __name__=='__main__':
+	(stopwds, model_doc2vec) = getPar2VecModel()
+	par = 'I like to commit on git !'
+	vec = getVec(par, stopwds, model_doc2vec)
+	print(vec)
