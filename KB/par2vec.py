@@ -9,8 +9,8 @@ from nltk.tokenize import RegexpTokenizer
 
 def getPar2VecModel():
 	# Loading of trained model ( Wikipedia ), to be charged one time 
-	model_doc2vec = Doc2Vec.load('./enwiki_dbow/enwiki_dbow/doc2vec.bin')
-	stopwds = stopword.words('english')
+	model_doc2vec = Doc2Vec.load('KB/enwiki_dbow/doc2vec.bin')
+	stopwds = stopwords.words('english')
 	return(stopwds, model_doc2vec)
 
 def getVec(paragraph,stopwds,model_doc2vec):
@@ -27,12 +27,14 @@ def getVec(paragraph,stopwds,model_doc2vec):
 	
     tok = RegexpTokenizer(r'\w+')
     res_inter = tok.tokenize(paragraph.lower())
-    res_inter_stop = [w for w in res_inter if w not in stopwords]
+    res_inter_stop = [w for w in res_inter if w not in stopwds]
     vect = model_doc2vec.infer_vector(res_inter_stop)
     return vect
 
 if __name__=='__main__':
+	print("Loading model...")
 	(stopwds, model_doc2vec) = getPar2VecModel()
+	print("Model loaded")
 	par = 'I like to commit on git !'
 	vec = getVec(par, stopwds, model_doc2vec)
 	print(vec)
